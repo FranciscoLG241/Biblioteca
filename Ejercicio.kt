@@ -19,15 +19,15 @@ data class DVD(val titulo: String, val director: String, val anio: Int)
 fun pedirLibro(usuario: Usuario, libro: Libro): String{
     return when (usuario){
         is Estudiante -> {
-            "El estudiante ${usuario.nombre} puede pedir prestado ${libro.titulo} durante una semana al ser un estudiante"
+            "El/La estudiante ${usuario.nombre} puede pedir prestado ${libro.titulo} durante una semana al ser un estudiante"
         }
 
         is Profesor -> {
-            "El profesor ${usuario.nombre} puede pedir prestado ${libro.titulo} durante un mes al ser un profesor"
+            "El/La profesor ${usuario.nombre} puede pedir prestado ${libro.titulo} durante un mes al ser un profesor"
         }
 
         is Visitante -> {
-            "El visitante ${usuario.nombre}} no puede pedir prestado ningún libro"
+            "El/La visitante ${usuario.nombre} no puede pedir prestado ningún libro"
         }
     }
 }
@@ -37,5 +37,14 @@ fun pedirLibro(usuario: Usuario, libro: Libro): String{
 
 fun main(){
 
+    val estudiante1 = Estudiante("1", "Julio", "1ºDAM")
+    val profesor1 = Profesor("2", "Juan", "2º DAM")
+    val visitante1 = Visitante("3", "Lucía", "Desconocido")
 
+    val libro1 = Libro("Título de Títulos", "George", 1987)
+
+
+    println(pedirLibro(estudiante1, libro1))
+    println(pedirLibro(profesor1, libro1))
+    println(pedirLibro(visitante1, libro1))
 }
